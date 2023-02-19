@@ -1,0 +1,74 @@
+(include "/home/horryportier/Documents/discusting/test1/widgets/buttons.yuck")
+
+(defpoll hour :interval "1s" `date +"%H"`)
+(defpoll min :interval "1s" `date +"%M"`)
+(defpoll sec :interval "1s" `date +"%S"`)
+
+(defvar apps '[["kitty","猫"],["kitty nvim ~/", "神"]]')
+(defvar apps-img '[["kitty nvim ~/", "/home/horryportier/Pictures/Neovim-mark.svg.png", 50]]')
+
+(defwindow test1 :monitor 0
+                 :stacking "bg"
+                 :windowtype  "dock"
+                 :wm-ignore false
+                 :geometry (geometry :width "100%" :height "100%")
+  (test1_layout))
+
+
+
+(defwidget test1_layout []
+  (box :class "layout-box" :space-evenly false :orientation "vertical"
+       :style "background-image: url('/home/horryportier/.config/eww/widgets/test1/wallpaper'); background-size: 1360px 768px;"
+    (box :space-evenly false  :orientation "h"
+      :haling "center"
+      :valing "center"
+    (box  :class "kanji-box1" :space-evenly false :orientation "h" :spacing 30
+          :halign "start"
+          :valign "start"
+      (_write_kanji :list '["國","木","田","獨","歩"]' :class "ver-text")
+      (_write_kanji :list '["谷","崎","潤","一","郎"]' :class "ver-text")
+      (_write_kanji :list '["宮","沢" ,"賢","治"]' :class "ver-text")
+      (_write_kanji :list '["与","謝","野 ","晶","子"]' :class "ver-text")
+      )
+
+    (box  :class "kanji-box2" :space-evenly false :orientation "h" :spacing 30
+          :halign "end"
+          :valign "top"
+      (_write_kanji :list '["太","宰" ,"治"]' :class "ver-text")
+      (_write_kanji :list '["中","島" ,"敦"]' :class "ver-text")
+      (_write_kanji :list '["平","井", "太","郎"]' :class "ver-text")
+      (_write_kanji :list '["${hour}","${min}","${sec}"]' :class "ver-text")
+      )
+)
+    (box :class "button-box" :space-evenly false :orientation "h"
+      (_buttons_text :list apps :class "panel-buttons")
+      (_buttons_img :list apps-img :class "panel-buttons")
+      )
+    )
+  )
+
+(defwidget _write_kanji [?list ?class]
+  (box :class "${class}"
+       :space-evenly false
+       :orientation "vertical"
+       :halign "center"
+       :valign "to"
+    (for entry in list
+      (label :text "${entry}")
+      )
+    )
+  )
+
+(defwidget _buttons [?list ?class]
+  (box :class "${class}"
+       :space-evenly false
+       :orientation "vertical"
+       :halign "center"
+       :valign "center"
+    (for entry in list
+      (button :onclick "${entry[0]}" "${entry[1]}")
+      )
+    )
+  )
+
+

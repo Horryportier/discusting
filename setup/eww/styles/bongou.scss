@@ -1,0 +1,68 @@
+$mocha-rosewater: rgb(245, 224, 220);
+$mocha-flamingo: rgb(242, 205, 205);
+$mocha-pink: rgb(245, 194, 231);
+$mocha-mauve: rgb(203, 166, 247);
+$mocha-red: rgb(243, 139, 168);
+$mocha-maroon: rgb(235, 160, 172);
+$mocha-peach: rgb(250, 179, 135);
+$mocha-yellow: rgb(249, 226, 175);
+$mocha-green: rgb(166, 227, 161);
+$mocha-teal: rgb(148, 226, 213);
+$mocha-sky: rgb(137, 220, 235);
+$mocha-sapphire: rgb(116, 199, 236);
+$mocha-blue: rgb(135, 176, 249);
+$mocha-lavender: rgb(180, 190, 254);
+$mocha-text: rgb(198, 208, 245);
+$mocha-subtext1: rgb(179, 188, 223);
+$mocha-subtext0: rgb(161, 168, 201);
+$mocha-overlay2: rgb(142, 149, 179);
+$mocha-overlay1: rgb(123, 129, 157);
+$mocha-overlay0: rgb(105, 109, 134);
+$mocha-surface2: rgb(86, 89, 112);
+$mocha-surface1: rgb(67, 70, 90);
+$mocha-surface0: rgb(49, 50, 68);
+$mocha-base: rgb(30, 30, 46);
+$mocha-mantle: rgb(24, 24, 37);
+$mocha-crust: rgb(17, 17, 27);
+
+* { all: unset; }
+
+.ver-text {
+        label {
+                color: $mocha-text;
+                font-size: 3em;
+                border: 0.1em double;
+                border-color: rgba($mocha-crust, 0.6);
+                background-color: rgba($mocha-base, 0.6);
+        }
+}
+
+.kanji-box1 {
+        padding-left :5em;
+        padding-top: 10em;
+}
+
+.kanji-box2 {
+        padding-left:50em;
+        padding-top: 10em;
+}
+.panel-buttons {
+        button {
+                color: $mocha-text;
+                font-size: 3em;
+                border: 0.1em double;
+                border-color: rgba($mocha-crust, 0.6);
+                background-color: rgba($mocha-base, 0.6);
+
+                &:hover {
+                        transition: 200ms linear background-color, border-radius;
+                        background-color: rgba($mocha-mauve, 0.9);
+                }
+
+        }
+}
+
+.button-box {
+        padding-left: 5em;
+        padding-top: 5em;
+}

@@ -1,0 +1,55 @@
+(include '/home/horryportier/.config/eww/widgets/buttons.yuck')
+(include '/home/horryportier/.config/eww/widgets/text.yuck')
+
+(defpoll hour :interval "1s" `date +"%H"`)
+(defpoll min :interval "1s" `date +"%M"`)
+(defpoll sec :interval "1s" `date +"%S"`)
+
+(defvar wallpaper "./wallpaper.png")
+(defvar apps '[["kitty","猫"],["kitty nvim ~/", "神"]]')
+(defvar apps-img '[["firefox", "./images/fox", 45],
+                ["kitty nvim ~/", "./images/Nvim", 45], ["kitty", "./images/Kitty", 45]]')
+
+(defwindow test1 :monitor 0
+                 :stacking "bg"
+                 :windowtype  "dock"
+                 :wm-ignore false
+                 :geometry (geometry :width "100%" :height "100%")
+  (test1_layout))
+
+
+
+(defwidget test1_layout []
+  (box :class "snow" :space-evenly false :orientation "vertical"
+       :style "background-image: url('./wallpaper'); background-size: 1360px 768px;"
+    (box :space-evenly false  :orientation "h"
+         :haling "center"
+         :valing "center"
+      (box  :class "kanji-box1" :space-evenly false :orientation "h" :spacing 30
+            :halign "start"
+            :valign "start"
+        (_write_kanji_vertical :list '["國","木","田","獨","歩"]' :class "ver-text")
+        (_write_kanji_vertical :list '["谷","崎","潤","一","郎"]' :class "ver-text")
+        (_write_kanji_vertical :list '["宮","沢" ,"賢","治"]' :class "ver-text")
+        (_write_kanji_vertical :list '["与","謝","野 ","晶","子"]' :class "ver-text")
+        )
+
+      (box  :class "kanji-box2" :space-evenly false :orientation "h" :spacing 30
+            :halign "end"
+            :valign "top"
+        (_write_kanji_vertical :list '["太","宰" ,"治"]' :class "ver-text")
+        (_write_kanji_vertical :list '["中","島" ,"敦"]' :class "ver-text")
+        (_write_kanji_vertical :list '["平","井", "太","郎"]' :class "ver-text")
+        (_write_kanji_vertical :list '["${hour}","${min}","${sec}"]' :class "ver-text")
+        )
+      )
+    (box :class "button-box" :space-evenly false :orientation "h"
+         :halign "start"
+         :valign "start"
+      ;(_buttons_text :list apps :class "panel-buttons")
+      (_buttons_img :list apps-img :class "panel-buttons")
+      )
+    )
+  )
+
+

@@ -1,0 +1,12 @@
+(defwidget _write_kanji_vertical [?list ?class]
+  (box :class "${class}"
+       :space-evenly false
+       :orientation "vertical"
+       :halign "center"
+       :valign "top"
+    (for entry in list
+      (label :text "${entry}")
+      )
+    )
+  )
+

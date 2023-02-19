@@ -1,0 +1,27 @@
+;button text provide list like that '["cmd","text"],["cmd", "text"]' and `class` name for css.
+(defwidget _buttons_text [?list ?class]
+  (box :class "${class}"
+       :space-evenly false
+       :orientation "vertical"
+       :halign "center"
+       :valign "center"
+    (for entry in list
+      (button :onclick "${entry[0]}" "${entry[1]}")
+      )
+    )
+  )
+
+;button image provide list like that '["cmd","path", scale],["cmd", "text", scale]' and `class` name for css.
+(defwidget _buttons_img [?list ?class ]
+  (box :class "${class}"
+       :space-evenly false
+       :orientation "vertical"
+       :halign "center"
+       :valign "center"
+    (for entry in list
+      (button :onclick "${entry[0]}" (image :path "${entry[1]}" :image-width "${entry[2]}" :image-height "${entry[2]}" ))
+      )
+    )
+  )
+
+
